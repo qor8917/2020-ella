@@ -4,21 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ella</title>
+  <title>의류쇼핑몰</title>
   <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="../css/index.css">
   <script src="../js/jquery-3.5.1.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
 <body>
+  <!-- .header-wrapper -->
   <header class="header-wrapper">
+    <!-- .top-wrapper -->
     <div class="top-wrapper">
       <div class="top-wrap wrapper">
         <i class="icon-earth fa fa-globe"></i>
         <i class="icon-down fa fa-caret-down"></i>
         <span class="tel">Available 24/7 at (018) 900-6690</span>
-        <span class="event">First purchase offer: take 30% off shopwide.</span>
+        <span class="event">First purchase offer: take 30% off shopwide</span>
         <span class="notice">Code applied at checkout. Exclusion apply*</span>
         <div class="trans-wrapper" style="display: none;">
           <div class="lang-wrap">
@@ -42,8 +46,8 @@
             <div class="flag-now" style="background-image: url(../img/i-currency-1_23x.png);"></div>
             <span class="lang-now">USD</span>
             <i class="bt-down fa fa-caret-down"></i>
-            <ul class="lang-sel" style="display: none;>
-							<li class=" title">CURRENCY</li>
+            <ul class="lang-sel" style="display: none;">
+              <li class="title">CURRENCY</li>
               <li>
                 <div class="flag" style="background-image: url(../img/i-currency-1_23x.png);"></div>
                 <span class="lang active">USD</span>
@@ -63,13 +67,14 @@
             </ul>
           </div>
         </div>
-
       </div>
-    </div><!-- //.top-wrapper -->
+    </div>
+    <!-- .top-wrapper // -->
+    <!-- .logo-wrapper -->
     <div class="logo-wrapper wrapper">
       <i class="bars fa fa-bars"></i>
       <div class="logo-wrap">
-        <a href="#"><img src="../img/logo.png" alt="" class="mw-100"></a>
+        <a href="#"><img src="../img/logo.png" alt="logo" class=" mw-100"></a>
       </div>
       <div class="link-wrap">
         <div class="event">
@@ -81,15 +86,17 @@
       </div>
       <div class="link-mo-wrap">
         <a href="#"><i class="fa fa-search"></i></a>
-        <a href="#"><i class="far fa-user-circle"></i></a>
+        <a href="#"><i class="fa fa-user-circle"></i></a>
         <a href="#" class="rel"><i class="fa fa-shopping-bag"></i>
           <div class="cart-cnt">0</div>
         </a>
       </div>
-    </div><!-- //.logo-wrapper -->
-    <div class="navi-wrapper">
+    </div>
+    <!-- .logo-wrapper // -->
+    <!-- .navi-wrapper -->
+    <div class="navi-wrapper rel">
       <div class="wrapper">
-        <div class="navi">
+        <div class="navi navi-new">
           <a href="#" class="hover-line">
             <i class="fa fa-plane-arrival"></i>
             New Releases
@@ -125,36 +132,38 @@
                 <a href="#" class="sub-navi hover-line">Metropolis</a>
               </div>
               <div class="sub-banner">
-                <img src="../img/mega-menu-4_460x.jpg" alt="">
+                <img src="../img/mega-menu-4_460x.jpg" alt="배너" class="mw-100">
               </div>
             </div>
-            <div class="slide-wrapper">
+            <div class="slide-container" id="newSlide">
               <div class="wrapper-mid rel">
-                <i class="bt-arrow bt-prev fa fa-angle-left"></i>
-                <i class="bt-arrow bt-next fa fa-angle-right"></i>
-                <div class="wrapper rel">
-
+                <div class="wrapper swiper-container">
+                  <div class="slide-wrapper swiper-wrapper">
+                    <!-- 슬라이드 삽입될곳 -->
+                  </div>
                 </div>
+                  <i class="bt-arrow bt-prev fa fa-angle-left"></i>
+                  <i class="bt-arrow bt-next fa fa-angle-right"></i>
               </div>
             </div>
           </div>
-        </div><!-- //New Releases -->
-        <div class="navi">
+        </div>
+        <div class="navi navi navi-best">
           <a href="#" class="hover-line">
             <i class="fa fa-crown"></i>
             Best Sellers
           </a>
         </div>
-        <div class="navi">
+        <div class="navi navi-men">
           <a href="#" class="hover-line">Men</a>
         </div>
-        <div class="navi">
+        <div class="navi navi-women">
           <a href="#" class="hover-line">Women</a>
         </div>
-        <div class="navi">
+        <div class="navi navi-kids">
           <a href="#" class="hover-line">Kids</a>
         </div>
-        <div class="navi">
+        <div class="navi navi-sales">
           <a href="#" class="hover-line">
             <i class="fa fa-percent"></i>
             Sales
@@ -168,10 +177,12 @@
           <div class="cart-cnt">0</div>
         </a>
       </div>
-    </div><!-- //.navi-wrapper -->
-  </header><!-- //.header-wrapper -->
-
+    </div>
+    <!-- .navi-wrapper // -->
+  </header>
+  <!-- .header-wrapper // -->
   <script src="../js/index.js"></script>
+  
 </body>
 
 </html>
