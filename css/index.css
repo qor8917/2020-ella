@@ -386,7 +386,7 @@ a:hover {
 	right: 0;
 	z-index: 2;
 }
-
+.navi-bottom {background-color: #eaeaea; padding: 2em 0;}
 .slide-wrapper .slide {
 	display: flex;
 	justify-content: space-between;
@@ -436,9 +436,16 @@ a:hover {
 	font-weight: bold;
 }
 
+.navi-wrapper .navi-best .navi-bottom {padding: 0;}
 .navi-wrapper .navi-best .navi-bottom>.wrapper {
-	display: flex;
+	display: flex;align-items: center;
 }
+.navi-wrapper .navi-best .navi-bottom>.wrapper>* {
+	flex: 33.3333% 0 0;
+}
+
+
+
 
 /************ 반응형 *************/
 @media screen and (max-width: 1199px) {
