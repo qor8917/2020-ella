@@ -266,6 +266,7 @@ a:hover {
 /************ .navi-wrapper *************/
 .navi-wrapper {
 	border-top: 1px solid #eaeaea;
+	z-index: 99;
 }
 
 .navi-wrapper>.wrapper {
@@ -319,10 +320,12 @@ a:hover {
 	height: 0;
 	opacity: 0;
 	overflow: hidden;
-	transition: 0.6s;
+	transition: 0.25s;
+	transform: translateY(50px);
 }
 
 .sub-wrapper.active {
+	transform: translateY(0);
 	height: auto;
 	opacity: 1;
 	overflow: visible;
@@ -444,9 +447,36 @@ a:hover {
 	flex: 33.3333% 0 0;
 }
 
+.sub-wrapper2{position: absolute;box-shadow: 0 .125em .5em rgba(0, 0, 0, 0.3);padding: 0.5em 1em;top: 4em;left: 0;background: #fff;display: none;}
+.sub-wrapper2 .depth{padding: 1em 0;width: 180px;font-weight: lighter;
+font-size: 0.875em;user-select: none;cursor: pointer;position: relative;background: #fff;}
+.sub-wrapper2 .depth:not(:last-child){border-bottom:1px solid #eaeaea;}
+.sub-wrapper2 .depth2 >ul{position: absolute;top: 0;left:calc(180px + 1.25em);background: #fff;box-shadow: 0.25em .125em .25em rgba(0, 0, 0, 0.3);padding: 0.5em 1em;z-index: 9;display: none;}
 
+.main-wrapper .swiper-slide img{width: 100%;}
+.main-wrapper .pager-wrapper{position: absolute;display: flex;justify-content: center;align-items: center;bottom: 1em;left: 50%;z-index: 9;transform: translateX(-50%);background-color:rgba(0,0,0,0.3);border-radius: 0.5em;}
+.main-wrapper .bt-arrow{font-size: 3em;color: #fff;text-shadow: 0 0 0.25em rgba(0,0,0,.5);user-select: none;cursor: pointer;padding: 0.5em;font-weight: bold;}
+.main-wrapper .swiper-pagination-bullet {
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border-radius: 100%;
+	background: #fff;
+	opacity: 1;
+}
+.main-wrapper .swiper-pagination-bullet-active{
+background: #61edff;
+}
 
-
+.main-wrapper .slogan-wrapper{position: absolute;background: #fff;padding: 0.5em;top: 50%;left: 50%;transform: translateY(-50%);}
+.main-wrapper .slogan-wrap{
+	border: 3px solid #bbb;padding: 4em 6em;text-align: center;
+}
+.main-wrapper .slogan-wrap h4{font-weight: bold;margin-bottom: 2em;}
+.main-wrapper .slogan-wrap h3{font-size: 3.5em;font-weight: bold;font-family: 'DM Serif Display', serif;}
+.main-wrapper .slogan-wrap p{margin: 2.5em 0;}
+.main-wrapper .slogan-wrap a{display: block;padding: 2em 5em;background: #293355;color: #f9f9f9;transition: 0.5s;font-weight: bold;}
+.main-wrapper .slogan-wrap a:hover{background: #fff;box-shadow: 0.125em 0.125em 0.25em rgba(0,0,0,0.3);color: #293355;}
 /************ 반응형 *************/
 @media screen and (max-width: 1199px) {
 	.wrapper {
@@ -497,7 +527,9 @@ a:hover {
 
 @media screen and (max-width: 991px) {}
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+  
+}
 
 @media screen and (max-width: 575px) {
 	.top-wrapper .top-wrap {

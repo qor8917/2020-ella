@@ -1,24 +1,69 @@
 /* *********전역변수********* */
 
 /* *********사용자함수********* */
-function creatNavi(r){
-html ='<a href="'+r.link+'">';
-if (r.icon) html +='<i class="'+r.icon+'"></i> ';
-html +=r.name+'</a>';
-return html;
+function mainBanner(){
+	var mainSwiper = new Swiper(".main-wrapper", {
+		slidesPerView: 1,
+		loop: true,
+		effect:"fade",
+		speed:1000,			
+		pagination: {
+			el: '.main-wrapper .pager-wrap',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.main-wrapper .bt-next',
+			prevEl: '.main-wrapper .bt-prev',
+		},
+	})
 }
-function creatSub(r){
-	html='<div class="sub-navi-wrap">';
-for (var i of r.depth2){
-	if (i.depth3) html+='</div><div class="sub-navi-wrap">';
-	html+='<a href="'+i.link+'" class="sub-navi bold">'+i.name+'</a>';
-	if(i.depth3){
-		for (var j of i.depth3){
-		html+='<a href="'+j.link+'" class="sub-navi hover-line">'+j.name+'</a>';
-	}	}
+function creatNavi(r) {
+	html = '<a href="' + r.link + '">';
+	if (r.icon) html += '<i class="' + r.icon + '"></i> ';
+	html += r.name + '</a>';
+	return html;
 }
-html+='</div>';
-return html;
+
+function creatSub(r) {
+	html = '<div class="sub-navi-wrap">';
+	for (var i of r.depth2) {
+		if (i.depth3) html += '</div><div class="sub-navi-wrap">';
+		html += '<a href="' + i.link + '" class="sub-navi bold">' + i.name + '</a>';
+		if (i.depth3) {
+			for (var j of i.depth3) {
+				html += '<a href="' + j.link + '" class="sub-navi hover-line">' + j.name + '</a>';
+			}
+		}
+	}
+	html += '</div>';
+	return html;
+}
+
+function creatSub2(r) {
+	var html = '';
+	for (var i of r.depth2) {
+		html += '<li class="depth depth2"><a href="' + i.link + '">' + i.name + '</a>';
+		if (i.depth3.length > 0) {
+			html += '<ul>';
+			for (var j of i.depth3) {
+				html += '<li class="depth depth3">';
+				html += '<a href="' + j.link + '">' + j.name + '</a>';
+				html += '</li>';
+			}
+			html += '</ul>';
+		}
+		html += '</li>';
+	}
+	return html;
+}
+
+function creatSubNavi(el, r) {
+	$(el).prepend(creatNavi(r));
+	$(el).find(".sub-wrapper2").append(creatSub2(r));
+	$(el).mouseenter(onSub2Enter);
+	$(el).mouseleave(onSub2Leave);
+	$(el).find(".depth2").mouseenter(onDepth2Enter);
+	$(el).find(".depth2").mouseleave(onDepth2Leave);
 }
 
 
@@ -27,12 +72,42 @@ return html;
 $(".top-wrapper .icon-down").click(onLangChg);
 $(".top-wrapper .bt-down").click(onLangSel);
 $.get("../json/new-products.json", onNewProducts);
-$.get("../json/navi-new.json",onNaviNew);
-$.get("../json/navi-best.json",onNaviBest);
+$.get("../json/navi-new.json", onNaviNew);
+$.get("../json/navi-best.json", onNaviBest);
+$.get("../json/navi-men.json", onNaviMen);
+$.get("../json/navi-women.json", onNaviWomen);
+$.get("../json/navi-kids.json", onNaviKids);
+
 $(".navi-wrapper .navi").mouseenter(onNavienter);
 $(".navi-wrapper .navi").mouseleave(onNavileave);
 
+$(window).scroll(onScroll);
+
+mainBanner();
+
+
+
 /* *********이벤트콜백********* */
+function onScroll(e){
+ var scTop = $(this).scrollTop();
+}
+
+function onSub2Enter() {
+	$(this).find(".sub-wrapper2").stop().slideDown(300);
+}
+
+function onSub2Leave() {
+	$(this).find(".sub-wrapper2").stop().slideUp(300);
+}
+
+function onDepth2Enter() {
+	$(this).find('ul').stop().fadeIn(300);
+}
+
+function onDepth2Leave() {
+	$(this).find('ul').stop().fadeOut(300);
+}
+
 function onNavienter() {
 	$(this).find(".sub-wrapper").addClass("active");
 }
@@ -40,18 +115,32 @@ function onNavienter() {
 function onNavileave() {
 	$(this).find(".sub-wrapper").removeClass("active");
 }
-function onNaviNew(r){
+
+function onNaviNew(r) {
 	$(".navi.navi-new").prepend(creatNavi(r));
- var html = creatSub(r);
-html+='<div class="sub-banner">';
-html+='<img src="../img/mega-menu-4_460x.jpg" alt="배너" class="mw-100">';
-html+='</div>';
-$(".navi.navi-new").find('.sub-navi-wrapper').append(html);
+	var html = creatSub(r);
+	html += '<div class="sub-banner">';
+	html += '<img src="../img/mega-menu-4_460x.jpg" alt="배너" class="mw-100">';
+	html += '</div>';
+	$(".navi.navi-new").find('.sub-navi-wrapper').append(html);
 }
-function onNaviBest(r){
+
+function onNaviBest(r) {
 	$(".navi.navi-best").prepend(creatNavi(r));
- var html = creatSub(r);
- $(".navi.navi-best").find('.sub-navi-wrapper').append(html);
+	var html = creatSub(r);
+	$(".navi.navi-best").find('.sub-navi-wrapper').append(html);
+}
+
+function onNaviMen(r) {
+	creatSubNavi(".navi.navi-men", r);
+}
+
+function onNaviWomen(r) {
+	creatSubNavi(".navi.navi-women", r);
+}
+
+function onNaviKids(r) {
+	creatSubNavi(".navi.navi-kids", r);
 }
 
 function onNewProducts(r) {
@@ -102,3 +191,4 @@ function onLangSel() {
 	if ($(this).next().css("display") === "none")
 		$(this).next().stop().slideDown(200);
 }
+
