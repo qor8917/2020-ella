@@ -1,12 +1,12 @@
 /* *********전역변수********* */
-
+var scTop, winWidth, topHeight, logoHeight;
 /* *********사용자함수********* */
-function mainBanner(){
+function mainBanner() {
 	var mainSwiper = new Swiper(".main-wrapper", {
 		slidesPerView: 1,
 		loop: true,
-		effect:"fade",
-		speed:1000,			
+		effect: "fade",
+		speed: 1000,
 		pagination: {
 			el: '.main-wrapper .pager-wrap',
 			clickable: true,
@@ -17,6 +17,7 @@ function mainBanner(){
 		},
 	})
 }
+
 function creatNavi(r) {
 	html = '<a href="' + r.link + '">';
 	if (r.icon) html += '<i class="' + r.icon + '"></i> ';
@@ -66,14 +67,32 @@ function creatSubNavi(el, r) {
 	$(el).find(".depth2").mouseleave(onDepth2Leave);
 }
 
+function naviShowHide() {
+	if (winWidth > 1199) { //pc
+		if (scTop >= topHeight + logoHeight) {
+			$(".navi-wrapper").css("position", "fixed");
+			$(".navi-wrapper > .wrapper").css("max-width", "100%");
+		} else {
+			$(".navi-wrapper").css("position", "relative");
+		}
+	} else { //mobile
+
+	}
+}
+
 
 /* *********이벤트선언********* */
+$(window).scroll(onScroll).resize(onResize).trigger("resize");
+
+mainBanner();
 
 $(".top-wrapper .icon-down").click(onLangChg);
 $(".top-wrapper .bt-down").click(onLangSel);
 $.get("../json/new-products.json", onNewProducts);
 $.get("../json/navi-new.json", onNaviNew);
 $.get("../json/navi-best.json", onNaviBest);
+$.get("../json/navi-sales.json", onNaviSales);
+
 $.get("../json/navi-men.json", onNaviMen);
 $.get("../json/navi-women.json", onNaviWomen);
 $.get("../json/navi-kids.json", onNaviKids);
@@ -81,15 +100,51 @@ $.get("../json/navi-kids.json", onNaviKids);
 $(".navi-wrapper .navi").mouseenter(onNavienter);
 $(".navi-wrapper .navi").mouseleave(onNavileave);
 
-$(window).scroll(onScroll);
+$(".modal-trigger").click(modalShow);
+$(".modal-container").click(onModalHide);
+$(".modal-wrapper").click(onModalWrapperClick);
+$(".modal-wrapper").find(".bt-close").click(onModalHide);
 
-mainBanner();
+
 
 
 
 /* *********이벤트콜백********* */
-function onScroll(e){
- var scTop = $(this).scrollTop();
+
+function onModalWrapperClick(e) {
+	e.stopPropagation();
+}
+
+function onModalHide() {
+	$(".type-rt").removeClass("active");
+	$(".modal-container").removeClass("active");
+	setTimeout(() => {
+		$(".modal-container").css("display", "none");
+		$("body").removeClass("hide");
+	}, 300);
+}
+
+function modalShow(e) {
+	e.preventDefault();
+	$(".modal-container").css("display", "block");
+	$(".modal-container").css("opacity");
+	$(".modal-container").addClass("active");
+	$("body").addClass("hide");
+	$($(this).data("modal")).addClass("active");
+	console.log($(this).data("modal"));
+}
+
+function onResize(e) {
+	topHeight = $(".top-wrapper").outerHeight();
+	logoHeight = $(".logo-wrapper").outerHeight();
+	winWidth = $(window).width();
+
+}
+
+function onScroll(e) {
+	scTop = $(this).scrollTop();
+	naviShowHide(); /*  스틱키 메뉴 생성 */
+
 }
 
 function onSub2Enter() {
@@ -114,6 +169,28 @@ function onNavienter() {
 
 function onNavileave() {
 	$(this).find(".sub-wrapper").removeClass("active");
+}
+
+function onNaviSales(r) {
+	$(".navi.navi-sales").prepend(creatNavi(r));
+	for (var i = 0; i < r.brands.length; i++) {
+		html = '<div class="brand-wrap">';
+		html += '<div class="img-wrap" style="background-image: url(' + r.brands[i].src + ');order:' + i % 2 + ';"></div>';
+		html += '<ul class="brand-link">'
+		html += '<li class="sub-navi bold"><a href="' + r.brands[i].link + '">' + r.brands[i].company + '</a></li>';
+		for (var j of r.brands[i].brand)
+			html += '<li class="sub-navi hover-line"><a href="' + j.link + '" >' + j.name + '</a></li>';
+		html += '</ul>';
+		html += '</div>';
+		$('.sales-wrapper').append(html);
+	}
+
+
+
+
+
+
+
 }
 
 function onNaviNew(r) {
@@ -191,4 +268,3 @@ function onLangSel() {
 	if ($(this).next().css("display") === "none")
 		$(this).next().stop().slideDown(200);
 }
-
