@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-
+<!-- head -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,18 @@
   <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/index.css">
   <script src="../js/jquery-3.5.1.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
+<!-- head //-->
 
 <body>
+  <!-- .header-wrapper -->
   <header class="header-wrapper">
+
+    <!-- .top-wrapper  -->
     <div class="top-wrapper">
       <div class="top-wrap wrapper">
         <i class="icon-earth fa fa-globe"></i>
@@ -66,9 +71,12 @@
           </div>
         </div>
       </div>
-    </div><!-- .top-wrapper // -->
+    </div>
+    <!-- .top-wrapper // -->
+
+    <!-- .logo-wrapper  -->
     <div class="logo-wrapper wrapper">
-      <i class="bars fa fa-bars"></i>
+      <i class="bars fa fa-bars modal-trigger" data-modal=".depth1"></i>
       <div class="logo-wrap">
         <a href="#"><img src="../img/logo.png" alt="logo" class=" mw-100"></a>
       </div>
@@ -87,9 +95,15 @@
           <div class="cart-cnt">0</div>
         </a>
       </div>
-    </div><!-- .logo-wrapper // -->
+    </div>
+    <!-- .logo-wrapper // -->
+
+    <!-- .navi-wrapper  -->
     <div class="navi-wrapper rel">
       <div class="wrapper">
+        <div class="navi-logo">
+          <a href="#"><img src="../img/logo.png" alt="logo" class=" mw-100"></a>
+        </div>
         <div class="navi navi-new">
           <!-- depth1 삽입 될곳 -->
           <div class="sub-wrapper type-1">
@@ -147,8 +161,8 @@
           <!-- depth1 삽입 될곳 -->
           <div class="sub-wrapper type-1">
             <div class="sales-wrapper">
-              <!-- depth2,3 삽입 될곳 -->              
-            </div>            
+              <!-- depth2,3 삽입 될곳 -->
+            </div>
           </div>
         </div>
         <a href="#" class="a-search">Search</a>
@@ -158,9 +172,15 @@
         <a href="#" class="rel modal-trigger" data-modal=".modal-cart"><i class="fa fa-shopping-bag"></i>
           <div class="cart-cnt">0</div>
         </a>
+        <a href="#" class="bt-login modal-trigger" data-modal=".modal-login"><i class="fa fa-user-circle"></i></a>
       </div>
-    </div><!-- .navi-wrapper // -->
-  </header><!-- .header-wrapper // -->
+    </div>
+    <!-- .navi-wrapper // -->
+
+  </header>
+  <!-- .header-wrapper // -->
+
+  <!-- .main-wrapper -->
   <section class="main-wrapper swiper-container rel">
     <div class="banner-wrapper swiper-wrapper">
       <div class="banner-wrap swiper-slide">
@@ -205,7 +225,11 @@
       <div class="bt-arrow bt-next">〉</div>
     </div>
 
-  </section><!-- .main-wrapper // -->
+  </section>
+  <!-- .main-wrapper // -->
+
+
+  <!-- .modal-container -->
   <div class="modal-container">
     <div class="modal-wrapper type-rt modal-login">
       <div class="close-wrap">
@@ -230,7 +254,53 @@
       <p>Your cart is currently empty.</p>
       <a href="#" class="bt-white">COUNTINUE SHOPPING</a>
     </div>
-  </div><!-- .modal-container// -->
+    <div class="modal-wrapper type-lt depth1">
+      <div class="top-wrap">
+        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
+        <ul>          
+        </ul>
+      </div>
+    </div>
+    <div class="modal-wrapper type-lt depth2">
+      <div class="top-wrap">
+        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
+        <ul></ul>
+      </div>
+    </div>
+    <div class="modal-wrapper type-lt depth3">
+      <div class="top-wrap">
+        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+  <!-- .modal-container// -->
+
+
+  <!-- .looking-wrapper -->
+  <scetion class="looking-wrapper">
+    <h2 class="title-main tc">I'm looking for..</h2>
+    <ul class="spot-wrapper wrapper">
+
+    </ul>
+  </scetion>
+  <!-- .looking-wrapper// -->
+
+  <!-- .best-wrapper -->
+  <scetion class="best-wrapper">
+    <h2 class="title-main tc">Best Selling</h2>
+    <div class="title-link tc">
+      <a href="#">View All</a>
+    </div>
+    <ul class="prd-wrapper wrapper">
+
+    </ul>
+  </scetion>
+  <!-- .best-wrapper // -->
+
   <script src="../js/index.js"></script>
 </body>
 

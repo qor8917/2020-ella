@@ -1,5 +1,5 @@
 /* *********전역변수********* */
-var scTop, winWidth, topHeight, logoHeight;
+var scTop, winWidth, topHeight, logoHeight,navi=[];
 /* *********사용자함수********* */
 function mainBanner() {
 	var mainSwiper = new Swiper(".main-wrapper", {
@@ -72,13 +72,49 @@ function naviShowHide() {
 		if (scTop >= topHeight + logoHeight) {
 			$(".navi-wrapper").css("position", "fixed");
 			$(".navi-wrapper > .wrapper").css("max-width", "100%");
+			$(".navi-wrapper .navi-logo").css("display","block");
+			$(".navi-wrapper .bt-login").css("display","block");
 		} else {
-			$(".navi-wrapper").css("position", "relative");
+			$(".navi-wrapper").css("position","relative");
+			$(".navi-wrapper > .wrapper").css("max-width", "1200px");
+			$(".navi-wrapper .navi-logo").css("display","none");
+			$(".navi-wrapper .bt-login").css("display","none");
 		}
+		$(".logo-wrapper").css("position","relative");
+		
 	} else { //mobile
-
+		if (scTop >=topHeight){
+			$(".logo-wrapper").css("position","fixed");
+		}else{
+			$(".logo-wrapper").css("position","relative");
+		}
+		$(".navi-wrapper").css("position","relative");
 	}
 }
+function createMoNavi(){
+	for(var i=0,html='';i<navi.length;i++){		
+		html+='<li onclick="createDepth2('+i+')"><a href="'+navi[i].link+'">'+navi[i].name+'</a></li>'
+		$(".modal-container .depth1").find("ul").html(html);
+	}
+}
+function createDepth2(idx){
+	for(var i=0,html='';i<navi[idx].depth2.length;i++){		
+		html+='<li onclick="createDepth3('+idx+','+i+')"><a href="'+navi[idx].depth2[i].link+'">'+navi[idx].depth2[i].name+'</a></li>'
+		$(".modal-container .depth2").find("ul").html(html);
+	}
+	$(".modal-container .depth2").addClass("active");		
+}
+function createDepth3(idx,idx2){
+	for(var i=0,html=""; i<navi[idx].depth2[idx2].depth3.length; i++) {
+		html += '<li>';
+		html += '<a href="#">'+navi[idx].depth2[idx2].depth3[i].name+'</a>';
+		html += '</li>';
+		$(".modal-container .depth3").find("ul").html(html);
+	}
+		$(".modal-container .depth3").addClass("active");		
+	
+}
+
 
 
 /* *********이벤트선언********* */
@@ -92,10 +128,10 @@ $.get("../json/new-products.json", onNewProducts);
 $.get("../json/navi-new.json", onNaviNew);
 $.get("../json/navi-best.json", onNaviBest);
 $.get("../json/navi-sales.json", onNaviSales);
-
 $.get("../json/navi-men.json", onNaviMen);
 $.get("../json/navi-women.json", onNaviWomen);
 $.get("../json/navi-kids.json", onNaviKids);
+$.get("../json/looking.json", onLooking);
 
 $(".navi-wrapper .navi").mouseenter(onNavienter);
 $(".navi-wrapper .navi").mouseleave(onNavileave);
@@ -110,13 +146,23 @@ $(".modal-wrapper").find(".bt-close").click(onModalHide);
 
 
 /* *********이벤트콜백********* */
-
+function onLooking(r){
+for(var i of r){
+html ='<li class="spot">';
+html +='<a href="'+i.link+'">';
+html +='<img src="'+i.src+'" alt="" class="w-100">';
+html +='</a>';
+html +='<h3 class="title hover-line">'+i.title+'</h3>';
+html +='</li>';
+$(".looking-wrapper .spot-wrapper").append(html);
+}
+}
 function onModalWrapperClick(e) {
 	e.stopPropagation();
 }
 
 function onModalHide() {
-	$(".type-rt").removeClass("active");
+	$(".modal-wrapper").removeClass("active");
 	$(".modal-container").removeClass("active");
 	setTimeout(() => {
 		$(".modal-container").css("display", "none");
@@ -131,7 +177,7 @@ function modalShow(e) {
 	$(".modal-container").addClass("active");
 	$("body").addClass("hide");
 	$($(this).data("modal")).addClass("active");
-	console.log($(this).data("modal"));
+	if ($(this).data("modal")== ".depth1") {createMoNavi()};
 }
 
 function onResize(e) {
@@ -172,6 +218,7 @@ function onNavileave() {
 }
 
 function onNaviSales(r) {
+	navi[5]=r;
 	$(".navi.navi-sales").prepend(creatNavi(r));
 	for (var i = 0; i < r.brands.length; i++) {
 		html = '<div class="brand-wrap">';
@@ -184,16 +231,10 @@ function onNaviSales(r) {
 		html += '</div>';
 		$('.sales-wrapper').append(html);
 	}
-
-
-
-
-
-
-
 }
 
 function onNaviNew(r) {
+	navi[0]=r;
 	$(".navi.navi-new").prepend(creatNavi(r));
 	var html = creatSub(r);
 	html += '<div class="sub-banner">';
@@ -203,20 +244,24 @@ function onNaviNew(r) {
 }
 
 function onNaviBest(r) {
+	navi[1]=r;
 	$(".navi.navi-best").prepend(creatNavi(r));
 	var html = creatSub(r);
 	$(".navi.navi-best").find('.sub-navi-wrapper').append(html);
 }
 
 function onNaviMen(r) {
+	navi[2]=r;
 	creatSubNavi(".navi.navi-men", r);
 }
 
 function onNaviWomen(r) {
+	navi[3]=r;
 	creatSubNavi(".navi.navi-women", r);
 }
 
 function onNaviKids(r) {
+	navi[4]=r;
 	creatSubNavi(".navi.navi-kids", r);
 }
 

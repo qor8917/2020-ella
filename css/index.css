@@ -67,7 +67,10 @@ a:hover {
 .bold:hover {
 	color: #ba7a2d;
 }
+.tc {text-align: center;}
 
+.title-link{color: #ba7a2d;text-transform: uppercase;
+}
 /************ .header-wrapper *************/
 .header-wrapper {
 	color: #333;
@@ -201,6 +204,11 @@ a:hover {
 	align-items: center;
 	padding: 1.25em 0;
 	background: #fff;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	
 }
 
 .logo-wrapper .logo-wrap {
@@ -268,6 +276,7 @@ a:hover {
 
 
 /************ .navi-wrapper *************/
+
 .navi-wrapper {
 	border-top: 1px solid #eaeaea;
 	z-index: 99;
@@ -280,6 +289,7 @@ a:hover {
 	display: flex;
 	align-items: center;
 }
+.navi-wrapper .navi-logo{display: none; width: 50px;margin: 0 9% 0 2%;}
 
 .navi-wrapper>.wrapper>.navi {
 	padding: 1.5em;
@@ -313,6 +323,9 @@ a:hover {
 .navi-wrapper span.line,
 .navi-wrapper a.bt-wishlist {
 	margin-right: 2em;
+}
+.navi-wrapper a.bt-login{
+	display: none; margin: 0 2em 0 1.75em;
 }
 
 .sub-wrapper {
@@ -598,13 +611,32 @@ a:hover {
 .modal-container.active{opacity: 1;}
 .modal-container .modal-wrapper{transition: .3s;width: 400px;background: #fff;position: absolute;}
 .modal-container .type-rt{right: 0;top: 0;height: 100vh;transform: translateX(100%);}
-.modal-container .type-rt.active{transform: translateX(0);}
+.modal-container .type-lt{left: 0;top: 0;height: 100vh;transform: translateX(-100%);}
+.modal-container .modal-wrapper.active{transform: translateX(0);}
+
+
+/************ looking-wrapper *************/
+.looking-wrapper{padding: 4em 0;}
+.looking-wrapper .spot-wrapper{display: flex;flex-wrap: wrap;}
+.looking-wrapper .spot-wrapper .spot{flex: 16.6666% 0 0;text-align: center;}
+.looking-wrapper .spot-wrapper .spot .title{display: inline-block;}
+
+/************ best-wrapper *************/
+
+
+
+
+
+
+
+
 
 /************ 반응형 *************/
+
 @media screen and (max-width: 1199px) {
 	.wrapper {
-		margin-left: 1em;
-		margin-right: 1em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	.top-wrapper .top-wrap {
@@ -650,7 +682,9 @@ a:hover {
 
 @media screen and (max-width: 991px) {}
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+	.looking-wrapper .spot-wrapper .spot{flex: 33.3333% 0 0;}
+}
 
 @media screen and (max-width: 575px) {
 	.top-wrapper .top-wrap {
