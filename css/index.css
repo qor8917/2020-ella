@@ -13,7 +13,12 @@ body {
 	line-height: 0.95;
 	height: 10000px;
 }
-body.hide{height: 100vh;overflow: hidden;padding-right: 17px;}
+
+body.hide {
+	height: 100vh;
+	overflow: hidden;
+	padding-right: 17px;
+}
 
 .wrapper-mid {
 	max-width: 1300px;
@@ -60,6 +65,42 @@ a:hover {
 	transform-origin: right;
 }
 
+.bt-blue {
+	width: 100%;
+	text-align: center;
+	background-color: #293355;
+	font-weight: bold;
+	color: #f9f9f9;
+	padding: 1.125em 0;
+	border: none;
+	transition: all 0.3s;
+	display: block;
+}
+
+.bt-blue:hover {
+	background-color: #fff;
+	color: #293355;
+	box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, .3);
+}
+
+.bt-white {
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	font-weight: bold;
+	color: #293355;
+	padding: 1.125em 0;
+	border: none;
+	transition: all 0.3s;
+	box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, .3);
+	display: block;
+}
+
+.bt-white:hover {
+	background-color: #293355;
+	color: #f9f9f9
+}
+
 .bold {
 	font-weight: bold;
 }
@@ -67,10 +108,16 @@ a:hover {
 .bold:hover {
 	color: #ba7a2d;
 }
-.tc {text-align: center;}
 
-.title-link{color: #ba7a2d;text-transform: uppercase;
+.tc {
+	text-align: center;
 }
+
+.title-link {
+	color: #ba7a2d;
+	text-transform: uppercase;
+}
+
 /************ .header-wrapper *************/
 .header-wrapper {
 	color: #333;
@@ -93,7 +140,7 @@ a:hover {
 	color: #f9f9f9;
 	font-family: 'Overpass', sans-serif;
 	padding: 1em 0;
-	
+
 }
 
 .top-wrapper .top-wrap {
@@ -208,7 +255,7 @@ a:hover {
 	top: 0;
 	left: 0;
 	z-index: 99;
-	
+
 }
 
 .logo-wrapper .logo-wrap {
@@ -289,7 +336,12 @@ a:hover {
 	display: flex;
 	align-items: center;
 }
-.navi-wrapper .navi-logo{display: none; width: 50px;margin: 0 9% 0 2%;}
+
+.navi-wrapper .navi-logo {
+	display: none;
+	width: 50px;
+	margin: 0 9% 0 2%;
+}
 
 .navi-wrapper>.wrapper>.navi {
 	padding: 1.5em;
@@ -324,15 +376,17 @@ a:hover {
 .navi-wrapper a.bt-wishlist {
 	margin-right: 2em;
 }
-.navi-wrapper a.bt-login{
-	display: none; margin: 0 2em 0 1.75em;
+
+.navi-wrapper a.bt-login {
+	display: none;
+	margin: 0 2em 0 1.75em;
 }
 
 .sub-wrapper {
 	position: absolute;
 	width: 100%;
 	top: 3.9em;
-	left: 0;	
+	left: 0;
 	background-color: #fff;
 	font-weight: normal;
 	letter-spacing: -0.05em;
@@ -475,19 +529,43 @@ a:hover {
 
 .navi-wrapper .navi-best .navi-bottom>.wrapper>* {
 	flex: 33.3333% 0 0;
-	
+
 }
 
-.navi-wrapper .sales-wrapper{display: flex;}
-.navi-wrapper .sales-wrapper .brand-wrap{flex: 20% 0 0;display: flex;align-items: center;height: 600px;flex-direction: column;}
-.navi-wrapper .sales-wrapper .brand-wrap .img-wrap{width: 100%;height: 50%;background-repeat: no-repeat;background-size: cover;background-position: center;}
-.navi-wrapper .sales-wrapper .brand-wrap .brand-link{width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 50%;}
+.navi-wrapper .sales-wrapper {
+	display: flex;
+}
+
+.navi-wrapper .sales-wrapper .brand-wrap {
+	flex: 20% 0 0;
+	display: flex;
+	align-items: center;
+	height: 600px;
+	flex-direction: column;
+}
+
+.navi-wrapper .sales-wrapper .brand-wrap .img-wrap {
+	width: 100%;
+	height: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.navi-wrapper .sales-wrapper .brand-wrap .brand-link {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 50%;
+}
 
 .sub-wrapper2 {
 	position: absolute;
 	box-shadow: 0 .125em .5em rgba(0, 0, 0, 0.3);
 	padding: 0.5em 1em;
-	top: 4em;
+	top: 3.9em;
 	left: 0;
 	background: #fff;
 	display: none;
@@ -557,7 +635,7 @@ a:hover {
 }
 
 .main-wrapper .swiper-pagination-bullet-active {
-	background: #61edff;
+	background: #293355;
 }
 
 .main-wrapper .slogan-wrapper {
@@ -606,22 +684,89 @@ a:hover {
 }
 
 /************ 모달  *************/
-.modal-container{position: fixed;left: 0;top: 0;width: 100%;height: 100vh;background:rgba(0,0,0,.5);z-index: 999;display: none;transition: .3s;opacity: 0;
+.modal-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, .5);
+	z-index: 999;
+	display: none;
+	transition: .3s;
+	opacity: 0;
 }
-.modal-container.active{opacity: 1;}
-.modal-container .modal-wrapper{transition: .3s;width: 400px;background: #fff;position: absolute;}
-.modal-container .type-rt{right: 0;top: 0;height: 100vh;transform: translateX(100%);}
-.modal-container .type-lt{left: 0;top: 0;height: 100vh;transform: translateX(-100%);}
-.modal-container .modal-wrapper.active{transform: translateX(0);}
+
+.modal-container.active {
+	opacity: 1;
+}
+
+.modal-container .modal-wrapper {
+	transition: .3s;
+	width: 400px;
+	background: #fff;
+	position: absolute;
+}
+
+.modal-container .type-rt {
+	right: 0;
+	top: 0;
+	height: 100vh;
+	transform: translateX(100%);
+}
+
+.modal-container .type-lt {
+	left: 0;
+	top: 0;
+	height: 100vh;
+	transform: translateX(-100%);
+}
+
+.modal-container .modal-wrapper.active {
+	transform: translateX(0);
+}
 
 
 /************ looking-wrapper *************/
-.looking-wrapper{padding: 4em 0;}
-.looking-wrapper .spot-wrapper{display: flex;flex-wrap: wrap;}
-.looking-wrapper .spot-wrapper .spot{flex: 16.6666% 0 0;text-align: center;}
-.looking-wrapper .spot-wrapper .spot .title{display: inline-block;}
+.looking-wrapper {
+	padding: 4em 0;
+}
+
+.looking-wrapper .spot-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.looking-wrapper .spot-wrapper .spot {
+	flex: 16.6666% 0 0;
+	text-align: center;
+}
+
+.looking-wrapper .spot-wrapper .spot .title {
+	display: inline-block;
+}
 
 /************ best-wrapper *************/
+
+
+
+
+
+
+/************ sub-banner-wrapper *************/
+.sub-banner-wrap{display: flex;flex-wrap: wrap;}
+.sub-banner-wrapper .sub-banner{flex: 50% 0 0;position: relative;}
+
+.sub-banner-wrapper .sub-banner:hover img{transform: scale(1.2);}
+.sub-banner-wrapper .sub-banner a.img-box{overflow: hidden;display: block;}
+.sub-banner-wrapper .sub-banner a.img-box::after{display: block;content: "";position: absolute;left: 0;top: 0;width: 100%;height: 100%;transition: 1s;}
+.sub-banner-wrapper .sub-banner:hover a.img-box::after{
+	background: rgba(0,0,0,0.5);
+}
+.sub-banner-wrapper .sub-banner a.img-box img{width: 100%;
+transition: 1s;}
+
+.sub-banner-wrapper .sub-banner a:last-child{position: absolute;left: 0;top: 0;}
 
 
 
@@ -683,7 +828,9 @@ a:hover {
 @media screen and (max-width: 991px) {}
 
 @media screen and (max-width: 767px) {
-	.looking-wrapper .spot-wrapper .spot{flex: 33.3333% 0 0;}
+	.looking-wrapper .spot-wrapper .spot {
+		flex: 33.3333% 0 0;
+	}
 }
 
 @media screen and (max-width: 575px) {

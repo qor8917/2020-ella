@@ -93,26 +93,34 @@ function naviShowHide() {
 }
 function createMoNavi(){
 	for(var i=0,html='';i<navi.length;i++){		
-		html+='<li onclick="createDepth2('+i+')"><a href="'+navi[i].link+'">'+navi[i].name+'</a></li>'
+		html+='<li onclick="createDepth2('+i+')"><a href="'+navi[i].link+'">'+navi[i].name+'</a><i class="fa fa-angle-right"></i></li>'
 		$(".modal-container .depth1").find("ul").html(html);
 	}
 }
-function createDepth2(idx){
-	for(var i=0,html='';i<navi[idx].depth2.length;i++){		
-		html+='<li onclick="createDepth3('+idx+','+i+')"><a href="'+navi[idx].depth2[i].link+'">'+navi[idx].depth2[i].name+'</a></li>'
+function createDepth2(idx){	
+	$(".modal-container .depth2 ").find("h4").html(navi[idx].name);
+	for(var i=0,html='';i<navi[idx].depth2.length;i++){
+		if(navi[idx].depth2[i].depth3 && navi[idx].depth2[i].depth3.length>0){
+			html+='<li onclick="createDepth3('+idx+','+i+')"><a href="#">'+navi[idx].depth2[i].name+'</a><i class="fa fa-angle-right"></i></li>'
 		$(".modal-container .depth2").find("ul").html(html);
+		}else{
+			html+='<li onclick="createDepth3('+idx+','+i+')"><a href="#">'+navi[idx].depth2[i].name+'</a></li>'
+			$(".modal-container .depth2").find("ul").html(html);
+		}		
 	}
+	
 	$(".modal-container .depth2").addClass("active");		
 }
 function createDepth3(idx,idx2){
-	for(var i=0,html=""; i<navi[idx].depth2[idx2].depth3.length; i++) {
-		html += '<li>';
-		html += '<a href="#">'+navi[idx].depth2[idx2].depth3[i].name+'</a>';
-		html += '</li>';
+	$(".modal-container .depth3 ").find("h4").html(navi[idx].depth2[idx2].name);
+	for(var i=0,html='';i<navi[idx].depth2[idx2].depth3.length;i++){		
+		html+='<li><a href="#">'+navi[idx].depth2[idx2].depth3[i].name+'</a></li>'
 		$(".modal-container .depth3").find("ul").html(html);
 	}
-		$(".modal-container .depth3").addClass("active");		
-	
+	$(".modal-container .depth3").addClass("active");		
+}
+function closeDepth(n){
+	$(".modal-wrapper.depth"+n).removeClass("active");	
 }
 
 
@@ -220,12 +228,12 @@ function onNavileave() {
 function onNaviSales(r) {
 	navi[5]=r;
 	$(".navi.navi-sales").prepend(creatNavi(r));
-	for (var i = 0; i < r.brands.length; i++) {
+	for (var i = 0; i < r.depth2.length; i++) {
 		html = '<div class="brand-wrap">';
-		html += '<div class="img-wrap" style="background-image: url(' + r.brands[i].src + ');order:' + i % 2 + ';"></div>';
+		html += '<div class="img-wrap" style="background-image: url(' + r.depth2[i].src + ');order:' + i % 2 + ';"></div>';
 		html += '<ul class="brand-link">'
-		html += '<li class="sub-navi bold"><a href="' + r.brands[i].link + '">' + r.brands[i].company + '</a></li>';
-		for (var j of r.brands[i].brand)
+		html += '<li class="sub-navi bold"><a href="' + r.depth2[i].link + '">' + r.depth2[i].name + '</a></li>';
+		for (var j of r.depth2[i].depth3)
 			html += '<li class="sub-navi hover-line"><a href="' + j.link + '" >' + j.name + '</a></li>';
 		html += '</ul>';
 		html += '</div>';

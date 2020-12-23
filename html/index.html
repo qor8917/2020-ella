@@ -256,7 +256,7 @@
     </div>
     <div class="modal-wrapper type-lt depth1">
       <div class="top-wrap">
-        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="close-wrap2" onclick="onModalHide()"><i class="fa fa-times" aria-hidden="true"></i></div>
         <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
         <ul>          
         </ul>
@@ -264,15 +264,15 @@
     </div>
     <div class="modal-wrapper type-lt depth2">
       <div class="top-wrap">
-        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
+        <div class="close-wrap2" onclick="closeDepth(2)"><i class="fa fa-angle-left"></i></div>
+        <h4></h4>
         <ul></ul>
       </div>
     </div>
     <div class="modal-wrapper type-lt depth3">
       <div class="top-wrap">
-        <div class="close-wrap2"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <div class="tel-wrap">Available 24/7 at <strong>(018) 900-6690</strong></div>
+        <div class="close-wrap2" onclick="closeDepth(3)"><i class="fa fa-angle-left"></i></div>
+        <h4></h4>
         <ul></ul>
       </div>
     </div>
@@ -281,16 +281,16 @@
 
 
   <!-- .looking-wrapper -->
-  <scetion class="looking-wrapper">
+  <section class="looking-wrapper">
     <h2 class="title-main tc">I'm looking for..</h2>
     <ul class="spot-wrapper wrapper">
 
     </ul>
-  </scetion>
+  </section>
   <!-- .looking-wrapper// -->
 
   <!-- .best-wrapper -->
-  <scetion class="best-wrapper">
+  <section class="best-wrapper">
     <h2 class="title-main tc">Best Selling</h2>
     <div class="title-link tc">
       <a href="#">View All</a>
@@ -298,8 +298,33 @@
     <ul class="prd-wrapper wrapper">
 
     </ul>
-  </scetion>
+  </section>
   <!-- .best-wrapper // -->
+
+  <!-- .sub-banner-wrapper -->
+  <section class="sub-banner-wrapper">
+    <div class="sub-banner-wrap wrapper">
+      <div class="sub-banner">
+        <a href="" class="img-box"><img src="../img/banner1.jpg" alt=""></a>
+        <a href="#" class="bt-white">Shop High Fashion</a>
+      </div>
+      <div class="sub-banner">
+        <a href="" class="img-box"><img src="../img/banner2.jpg" alt=""></a>
+        <a href="#" class="bt-white">
+          Shop Casualwear</a>
+      </div>
+      <div class="sub-banner">
+        <a href="" class="img-box"><img src="../img/banner3.jpg" alt=""></a>
+        <a href="#" class="bt-white">
+          Shop Formalwear</a>
+      </div>
+      <div class="sub-banner">
+        <a href="" class="img-box"><img src="../img/banner4.jpg" alt=""></a>
+        <a href="#" class="bt-white"><i class="fa fa-map-marker" aria-hidden="true"></i>Stores Location</a>
+      </div>
+    </div>
+  </section>
+  <!-- .sub-banner-wrapper //-->
 
   <script src="../js/index.js"></script>
 </body>
