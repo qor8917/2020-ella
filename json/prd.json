@@ -1,0 +1,136 @@
+[ 
+ {
+    "id": 1,
+    "link": "#",
+    "title": "MARK",
+    "summary": "Dinterdum Pretium De Condimentus",
+    "star": 2.5,
+    "originalPrice": 199,
+    "salePrice": 139,
+    "origin": "from",
+    "srcFront": "../img/pick1.jpg",
+    "srcBack": "../img/pick4-1.jpg",
+    "thumb": [
+      {
+        "name":"1",
+        "src":"../img/pick1-thumb.jpg",
+        "color":"black",
+        "dataSrc":"../img/pick1.jpg"
+      },
+      {
+        "name":"2",
+        "src":"../img/pick3-brown-thumb.jpg",
+        "color":"red",
+        "dataSrc":"../img/pick3-brown.jpg"
+      },
+      {
+        "name":"3",
+        "src":"../img/pick3-pink-thumb.jpg",
+        "color":"white",
+        "dataSrc":"../img/pick3-pink.jpg"
+      }
+
+    ]
+    ,
+    "label": [
+      {
+        "sale": "-20%",
+        "new": "NEW",
+        "bundle": "Bundle"
+      }      
+    ]
+  },
+  {
+    "id": 2,
+    "link": "#",
+    "title": "MAR",
+    "summary": "abc",
+    "star": 0,
+    "originalPrice": 199,
+    "salePrice": 111,
+    "origin": "from",
+    "srcFront": "../img/pick4.jpg",
+    "srcBack": "../img/pick4-1.jpg",
+    "thumb": [
+      {
+        "name":"1",
+        "src":"../img/pick1-thumb.jpg",
+        "color":"red" 
+      },{
+        "name":"2",
+        "src":"../img/pick2-thumb.jpg",
+        "color":"red" 
+      }
+    ]
+    ,
+    "label": [
+      {
+        
+        "new": "NEW",
+        "bundle": "Bundle"
+      }      
+    ]
+  },
+  {
+    "id": 3,
+    "link": "#",
+    "title": "MA",
+    "summary": "Dinterdum Pretium De Condimentus",
+    "star": 4.5,
+    "originalPrice": 199,
+    "salePrice": 139,
+    "origin": "from",
+    "srcFront": "../img/pick4.jpg",
+    "srcBack": "../img/pick4-1.jpg",
+    "thumb": [
+      {
+        "name":"1",
+        "src":"../img/pick4-thumb.jpg",
+        "color":"red" 
+      }
+    ]
+    ,
+    "label": [
+      {
+        
+        "bundle": "Bundle"
+      }      
+    ]
+  },
+  {
+    "id": 4,
+    "link": "#",
+    "title": "MARK",
+    "summary": "Dinterdum Pretium De Condimentus",
+    "star": 0.5,
+    "originalPrice": 199,
+    "salePrice": 139,
+    "origin": "from",
+    "srcFront": "../img/pick4.jpg",
+    "srcBack": "../img/pick4-1.jpg",
+    "thumb": [
+      {
+        "name":"1",
+        "src":"../img/pick4-thumb.jpg",
+        "color":"red" 
+      },{
+        "name":"2",
+        "src":"../img/pick4-thumb.jpg",
+        "color":"red" 
+      },{
+        "name":"3",
+        "src":"../img/pick4-thumb.jpg",
+        "color":"red" 
+      }
+    ]
+    ,
+    "label": [
+      {
+        "sale": "-20%",
+        "new": "NEW",
+        "bundle": "Bundle"
+      }      
+    ]
+  }
+  
+]	

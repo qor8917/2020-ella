@@ -1,6 +1,13 @@
 /* *********전역변수********* */
 var scTop, winWidth, topHeight, logoHeight, navi = [];
 /* *********사용자함수********* */
+function renderStar(){
+	$(".star").each(function(){
+		var score = Number($(this).data("score"));	
+		if(score > 0) $(this).find("i").addClass("active");
+		$(this).find(".mask").css("left", score *20+ "%");
+	})
+}
 function mainBanner() {
 	var mainSwiper = new Swiper(".main-wrapper", {
 		slidesPerView: 1,
@@ -144,6 +151,7 @@ $.get("../json/navi-men.json", onNaviMen);
 $.get("../json/navi-women.json", onNaviWomen);
 $.get("../json/navi-kids.json", onNaviKids);
 $.get("../json/looking.json", onLooking);
+$.get("../json/prd.json", onPrd);
 
 $(".navi-wrapper .navi").mouseenter(onNavienter);
 $(".navi-wrapper .navi").mouseleave(onNavileave);
@@ -158,6 +166,70 @@ $(".modal-wrapper").find(".bt-close").click(onModalHide);
 
 
 /* *********이벤트콜백********* */
+function onPrd(r){	
+for(var i of r){
+html ='<li class="prd swiper-slide">';
+html+='<div class="label-wrap">';
+for(var j of i.label){
+if(j.sale)html+='<div class="label label-sale">'+j.sale+'</div>';
+if(j.new)html+='<div class="label label-new">'+j.new+'</div>';
+if(j.bundle)html+='<div class="label label-bundle">'+j.bundle+'</div>';
+}
+html+='</div>';
+html+='<div class="quick-wrap"><i class="fa fa-eye" aria-hidden="true"></i><span> Quick view</span>';
+html+='</div>';
+html+='<div class="img-wrap">';
+html+='<img src="'+i.srcFront+'" alt="" class="w-100 img-front">';
+html+='<img src="'+i.srcBack+'" alt="" class="w-100">';
+html+='<a href="#" class="bt-white">ADD CART</a>';
+html+='</div>';
+html+='<div class="title-wrap">';
+html+='<div class="title">'+i.title+'</div>';
+html+='<i class="far fa-heart"></i>';
+html+='</div>';
+html+='<ul class="thumb-wrap">';
+for(var j of i.thumb){
+	if (j.name==1){html+='<li class="thumb active">'}else{
+html+='<li class="thumb">';}	
+html+='<div class="thumb-img-wrap"><img src="'+j.src+'" alt="" class="w-100" data-src="'+j.dataSrc+'"></div>';
+html+='<div class="popper">'+j.color+'</div>';
+html+='</li>';
+}       
+html+='</ul>';
+html+='<p class="description hover-line">'+i.summary+'</p>';
+html+='<div class="price">$'+i.salePrice+'</div>';
+html+='<div class="star-wrap">';
+
+html+='<div class="star" data-score="'+i.star+'">';
+for(var k=0;k<5;k++){html+='<i class="fa fa-star"></i>'};
+if(i.star>0)html+='<div class="mask"></div>';
+html+='</div>';
+html+='<p class="bt-more">More sizes available</p>';
+html+='</div>';
+html+='</li>';
+$(".prd-wrap").append(html)}
+
+renderStar();
+var bestSwiper = new Swiper('#bestSlide.swiper-container', {
+	slidesPerView: 4,
+	loop: true,
+	autoplay: {
+		delay: 3000,
+	},
+	navigation: {
+		nextEl: '#bestSlide .bt-next',
+		prevEl: '#bestSlide .bt-prev',
+	},
+});
+$(".prd .thumb-wrap .thumb").click(onChgImg);
+
+
+}
+function onChgImg(){
+	$(this).parents(".prd").find(".img-front").attr("src",$(this).find("img").data("src"));
+	
+	$(this).addClass("active").siblings().removeClass("active");
+}
 function onLooking(r) {
 	for (var i of r) {
 		html = '<li class="spot">';
@@ -281,7 +353,7 @@ function onNaviKids(r) {
 }
 
 function onNewProducts(r) {
-	for (var i = 0, html = ''; i < r.length; i++) {
+	for (var i = 0, html = '',$slide; i < r.length; i++) {
 		html = '<div class="slide swiper-slide">';
 		html += '<div class="img-wrap">';
 		html += '<img src="' + r[i].src + '" alt="상품" class="w-100">';
@@ -289,15 +361,9 @@ function onNewProducts(r) {
 		html += '<div class="content-wrap">';
 		html += '<h4 class="title">' + r[i].title + '</h4>';
 		html += '<p class="summary">' + r[i].summary + '</p>';
-		html += '<div class="star">';
-		for (var j = 0; j < 5; j++) {
-			if (r[i].star == 0) {
-				html += '<i class="fa fa-star"></i>';
-			} else {
-				html += '<i class="fa fa-star active"></i>';
-			}
-			html += '<div class="mask"></div>';
-		}
+		html += '<div class="star" data-score="'+r[i].star+'">';
+		for (var j = 0; j < 5; j++)	html += '<i class="fa fa-star"></i>';			
+		if(Number(r[i].star) > 0) html += '<div class="mask"></div>';
 		html += '</div>';
 		html += '<div class="content">';
 		html += '<span class="price-original">$' + r[i].originalPrice + '</span>';
@@ -307,7 +373,9 @@ function onNewProducts(r) {
 		html += '<div class="price-sale">$' + r[i].salePrice + '</div>';
 		html += '</div>';
 		html += '</div>';
-		$(".navi-new .slide-wrapper").append(html);
+		$slide = $(html).appendTo(".navi-new .slide-wrapper");
+		renderStar();
+		
 	}
 	var mySwiper = new Swiper('#newSlide .swiper-container', {
 		slidesPerView: 4,
